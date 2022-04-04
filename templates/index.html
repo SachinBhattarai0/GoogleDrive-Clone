@@ -1,0 +1,60 @@
+{% extends 'base.html' %} {% load static %}{% load humanize %} {% block content %} {% for message in messages %} {% include 'message.html' %} {% endfor %}
+<section class="storage-info">
+    <div class="container mt-1">
+        <h6>Storage Utilized:</h6>
+        <div class="progress-c">
+            <div class="progress-bar storage-progress-bar"></div>
+            <div class="storage-info-text"></div>
+        </div>
+    </div>
+    <hr>
+</section>
+<section class="upload-progress">
+    <form id="form">
+        <input type="file" hidden name="files" id="input" multiple>
+    </form>
+    <div class="container collapse-container mt-2">
+        <div class="collapse" id="collapse">
+            <div class="card card-body progress-container">
+                <h4 class="text-center">Uploading Files</h4>
+                <button hidden type="button close" class="btn btn-outline-orange" style="position: absolute;right: 19px;top: 10px;" id="collapse-btn" data-bs-toggle="collapse" data-bs-target="#collapse" aria-expanded="false" aria-controls="collapse">
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+<input type="hidden" value="{{total_used}}" disabled readonly id="totalused">
+<section class="hidden">
+    <form id="form" action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="file" id="input" name="files" multiple hidden>
+    </form>
+</section>
+<section class="main-section">
+    <div class="card-container">
+        {% if files %} {% for file in files %}
+        <a href="{{file.file.url}}" target="_blank">
+            <div class="card p-2 m-1">
+                {% if file.extension == 'jpg' or file.extension == 'jpeg' or file.extension == 'png' or file.extension == 'webp' %}
+                <img height="170px" src="{{file.file.url}}" class="card-img-top" alt="Folder_img"> {% elif file.extension == 'exe' %}
+                <img height="170px" src="{% static 'images/exe.png' %}" class="card-img-top" alt="Folder_img"> {% elif file.extension == 'zip' %}
+                <img height="170px" src="{% static 'images/zip.jpg' %}" class="card-img-top" alt="Folder_img"> {% elif file.extension == 'msi' %}
+                <img height="170px" src="{% static 'images/msi.png' %}" class="card-img-top" alt="Folder_img"> {% elif file.extension == 'pdf' %}
+                <img height="170px" src="{% static 'images/pdf.png' %}" class="card-img-top" alt="Folder_img"> {% elif file.extension == 'html' or file.extension == 'htm' %}
+                <img height="170px" src="{% static 'images/html.png' %}" class="card-img-top" alt="Folder_img"> {% elif file.extension == 'txt' %}
+                <img height="170px" src="{% static 'images/txt.webp' %}" class="card-img-top" alt="Folder_img"> {% elif file.extension == 'mp4' %}
+                <img height="170px" src="{% static 'images/mp4.jpg' %}" class="card-img-top" alt="Folder_img">{% elif file.extension == 'rtf' %}
+                <img height="170px" src="{% static 'images/rtf.jpg' %}" class="card-img-top" alt="Folder_img"> {% else %}
+                <img height="170px" src="{% static 'images/unidentified.png' %}" class="card-img-top" alt="Folder_img"> {% endif %}
+                <div class="card-body">
+                    <h6 class="card-title">{{file.name|truncatechars:43}}</h6>
+                    <h7 style="font-style: italic; color: rgb(112, 112, 112);">{{file.uploaded | naturalday}}</h7>
+                </div>
+            </div>
+        </a>
+        {% endfor %} {% else %}
+        <h4>No files present upload one.</h4> {% endif %}
+    </div>
+</section>
+<script src="{% static 'script.js' %}" defer></script>
+{% endblock content %}

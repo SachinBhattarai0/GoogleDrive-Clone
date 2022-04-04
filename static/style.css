@@ -1,0 +1,160 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --orange: #fd7e14;
+    --yellow: #ffc107;
+}
+
+nav {
+    background-color: var(--orange);
+}
+
+.collapse-container {
+    padding-left: 5rem;
+    padding-right: 5rem;
+}
+
+.progress-container {
+    display: flex !important;
+}
+
+.file-progress {
+    border: 2px dotted var(--yellow);
+    margin: .2rem;
+    padding: .2rem .5rem .2rem .5rem;
+}
+
+img,
+svg {
+    margin-top: -3px;
+    margin-left: 1px;
+}
+
+.progress-c {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    font-weight: bold;
+}
+
+.progress-bar {
+    background-color: var(--orange);
+    height: 12px;
+    border-radius: 5px;
+}
+
+.card-title {
+    text-align: justify;
+}
+
+.card-container {
+    margin: 2rem 4rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    min-height: 80vh;
+}
+
+.card {
+    max-height: 17rem;
+}
+
+.card-container img {
+    object-fit: cover;
+}
+
+.card-container a {
+    text-decoration: none;
+    color: black;
+}
+
+.abort-pcompleted {
+    display: flex;
+}
+
+.abort-button {
+    border: none;
+    color: #dc3545;
+    background-color: transparent;
+}
+
+.btn-outline-orange {
+    border: 1px solid var(--orange);
+    color: var(--orange);
+}
+
+.card.p-2.m-1 {
+    width: 15rem;
+}
+
+.btn-outline-orange:hover {
+    background-color: var(--orange);
+    color: white;
+    border-color: var(--yellow);
+}
+
+.login_register {
+    min-height: 82vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login_register .container {
+    height: 70vh;
+    width: 40vw;
+    border-radius: 12px;
+}
+
+.login_register form {
+    padding-top: 2rem;
+    padding-bottom: 0rem;
+}
+
+.login_register .container input.btn {
+    background-color: var(--orange);
+    border-color: var(--yellow);
+    color: white;
+}
+
+.login_register .container input {
+    margin: 10px 0 10px 0;
+}
+
+.login_register .container input.btn:hover {
+    background-color: var(--yellow);
+}
+
+@media only screen and (max-width:900px) {
+    .login_register .container {
+        width: 80vw;
+    }
+    .card-container {
+        margin: 2rem 0;
+    }
+    .card {
+        width: 10rem;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    .login_register .container {
+        width: 80vw;
+    }
+}
+
+@media only screen and (max-width:400px) {
+    .login_register .container {
+        width: 95vw;
+    }
+}
+
+.footer {
+    background-color: var(--orange);
+    color: white;
+}
